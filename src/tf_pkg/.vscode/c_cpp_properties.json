@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/rose/ros_ws/tf_ws/devel/include",
+                "/home/rose/dashgo_ws/devel/include",
+                "/opt/ros/indigo/include",
+                "/home/rose/ros_ws/tf_ws/src/pointgrey_camera_driver/pointgrey_camera_driver/include",
+                "/home/rose/ros_ws/tf_ws/src/jackal_simulator/robot_localization/include",
+                "/home/rose/ros_ws/tf_ws/src/tf_pkg/include",
+                "/usr/include"
+            ],
+            "name": "Linux",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}
