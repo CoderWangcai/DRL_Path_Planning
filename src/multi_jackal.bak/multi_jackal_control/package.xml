@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<package>
+  <name>multi_jackal_control</name>
+  <version>0.0.5</version>
+  <description>Creates the joint and velocity controllers.</description>
+  <maintainer email="nick.dave.sullivan@gmail.com">Nick Sullivan</maintainer>
+  <author     email="nick.dave.sullivan@gmail.com">Nick Sullivan</author>
+  <license>BSD</license>
+  <url>http://ros.org/wiki/multi_jackal_control</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roslaunch</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>roslaunch</build_depend>
+  <build_depend>controller_manager</build_depend>
+  
+  <build_depend>interactive_marker_twist_server</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>urdf</build_depend>
+  <build_depend>xacro</build_depend>
+  <build_depend>gazebo_ros_control</build_depend>
+  <build_depend>hector_gazebo_plugins</build_depend>
+  <build_depend>joint_state_controller</build_depend>
+  <build_depend>diff_drive_controller</build_depend>
+  
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>nav_msgs</run_depend>
+  <run_depend>controller_manager</run_depend>
+  <run_depend>interactive_marker_twist_server</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>urdf</run_depend>
+  <run_depend>xacro</run_depend>
+  <run_depend>gazebo_ros_control</run_depend>
+  <run_depend>hector_gazebo_plugins</run_depend>
+  <run_depend>joint_state_controller</run_depend>
+  <run_depend>diff_drive_controller</run_depend>
+
+  <export>
+  </export>
+</package>

@@ -1,0 +1,17 @@
+frequency: 50
+transform_time_offset: 0.1
+odom0: jackal_velocity_controller/odom
+odom0_differential: false
+odom0_config: [false, false, false,
+               false, false, false,
+               true,  true,  true,
+               false, false, true,
+               false, false, false]
+
+imu0: imu/data
+imu0_differential: false
+imu0_config: [false, false, false,
+              true,  true,  true,
+              false, false, false,
+              true,  true,  true,
+              false, false, false]

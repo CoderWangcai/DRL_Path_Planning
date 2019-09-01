@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package>
+  <name>multi_jackal_nav</name>
+  <version>0.0.5</version>
+  <description>Localization and navigation for the Jackal.</description>
+  <maintainer email="nick.dave.sullivan@gmail.com">Nick Sullivan</maintainer>
+  <author     email="nick.dave.sullivan@gmail.com">Nick Sullivan</author>
+  <license>BSD</license>
+  <url>http://ros.org/wiki/multi_jackal_nav</url>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roslaunch</build_depend>
+  <build_depend>robot_localization</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>move_base</build_depend>
+  
+  <run_depend>robot_localization</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>move_base</run_depend>
+
+  <export>
+  </export>
+</package>

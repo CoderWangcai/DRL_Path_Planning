@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<!-- Launches Jackal Gazebo simulation in an empty world. Then control the robot 
+     using the interactive markers, or the '2D Nav Goal' button in RVIZ.
+     To open Gazebo, enter 'gzclient' in a new tab.
+     
+     To change the world, set 'world' to a valid file in 
+     'multi_jackal_gazebo/worlds'. Loading a world for the first time might 
+     take a while.
+     
+     To change the equipment on the Jackal, set 'config' to a valid file in
+     'multi_jackal_description/urdf/configs'.
+     The config might require a 'config_id' for further customisation. -->
+
+<launch>
+  <arg name="ns"        default="jackal0"/>
+  <!-- <arg name="config"    default="laser_add_apriltags"/> -->
+  <!-- <arg name="config"    default=""/> -->
+  <arg name="config"    default="front_laser"/>
+  <arg name="config_id" default="0"/>
+  <!-- <arg name="world"     default="obstacle_sensor.world"/> -->
+  <!-- <arg name="world"     default="obstacle_sensor_true.world"/> -->
+  <!-- <arg name="world"     default="obstacle_sensor_true_2.world"/> -->
+  <arg name="world"     default="empty_sensor.world"/>
+  <arg name="gui"       default="true"/>
+  <arg name="rviz"      default="false"/>
+
+  <!-- Start Gazebo. -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui"          value="$(arg gui)"/>
+    <arg name="world_name"   value="$(find multi_jackal_tutorials)/worlds/$(arg world)"/>
+  </include>
+  
+  <!-- Spawn the robot. -->
+ <include file="$(find multi_jackal_base)/launch/jackal_base.launch">
+    <arg name="ns"            value="$(arg ns)"/>
+    <arg name="config"        value="$(arg config)"/>
+    <arg name="config_id"     value="$(arg config_id)"/>
+    <arg name="use_move_base" value="false"/>
+  </include> 
+  
+  <!-- View in RVIZ. -->
+  
+  <group if="$(arg rviz)">
+    <node name="rviz" pkg="rviz" type="rviz" ns="$(arg ns)" args="-d $(find multi_jackal_tutorials)/rviz/one_jackal.rviz" >
+      <remap from="/move_base_simple/goal" to="/$(arg ns)/move_base_simple/goal"/>
+    </node>
+  </group>
+
+</launch>

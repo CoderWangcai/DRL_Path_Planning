@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<!-- This file launches the Jackal robot controller spawner, which plugs into
+     gazebo to allow the Jackal to be controlled. -->
+     
+<launch>
+  <!-- Namespace must be unique. -->
+  <arg name="ns" default="jackal0"/>
+
+  <!-- Load the controller parameters. Also add the namespace to the frames, this 
+       can't be done in the YAML file so we override it here. -->
+  <rosparam command="load" 
+            file="$(find multi_jackal_control)/config/jackal_control_config.yaml" 
+            ns="$(arg ns)"
+  />
+  <param name="$(arg ns)/jackal_velocity_controller/odom_frame_id" value="$(arg ns)/odom"/>
+  <param name="$(arg ns)/jackal_velocity_controller/base_frame_id" value="$(arg ns)/base_link"/>
+  
+  <!-- Spawn the jackal controls. -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner"
+      args="jackal_joint_publisher jackal_velocity_controller" ns="$(arg ns)">
+  </node>
+        
+  <!-- Create a control marker for manual control using RVIZ. -->
+  <node pkg="interactive_marker_twist_server" type="marker_server" name="twist_marker_server" ns="$(arg ns)">
+    <remap from="twist_marker_server/cmd_vel" to="jackal_velocity_controller/cmd_vel" />
+    <param name="link_name" value="$(arg ns)/base_link"/>
+  </node> 
+
+</launch>
+

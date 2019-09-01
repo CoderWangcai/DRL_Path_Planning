@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+
+<!-- This file creates the sensor fusion node, and the navigation node. -->
+
+<launch>
+  <arg name="ns"    default="jackal0"/>
+  <arg name="x"     default="0"/>
+  <arg name="y"     default="0"/>
+  <arg name="z"     default="0"/>
+  <arg name="roll"  default="0"/>
+  <arg name="pitch" default="0"/>
+  <arg name="yaw"   default="0"/>
+  <arg name="use_move_base"  default="false"/>
+  <arg name="use_global_ekf" default="false"/>
+  <arg name="use_global_tf"  default="true"/>
+
+  <!-- Robot localisation, takes IMU and wheel odometry to form a single localisation
+       estimate. This is the local filter, providing the odom to base_link transformation. -->
+  <node pkg="robot_localization" type="ekf_localization_node" name="local_ekf_localization" ns="$(arg ns)">
+    <rosparam command="load" file="$(find multi_jackal_nav)/params/local_ekf.yaml"/>
+    <param name="map_frame"       value="map"/>
+    <param name="odom_frame"      value="$(arg ns)/odom"/>
+    <param name="base_link_frame" value="$(arg ns)/base_link"/>
+    <param name="world_frame"     value="$(arg ns)/odom"/>
+    <remap from="odometry/filtered" to="odometry/local_filtered"/>
+  </node>
+
+  <!-- Robot localisation, takes GPS signals and fuses them with local odometry
+       to form a single localisation estimate. This is the global filter, providing
+       the map to odom transformation. -->
+  <group if="$(arg use_global_ekf)">
+    <node ns="$(arg ns)" pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node" output="screen">
+      <param name="delay"                        value="5.0"/>
+      <param name="yaw_offset"                   value="1.5707963"/>
+      <param name="magnetic_declination_radians" value="0.13759"/>
+      <param name="zero_altitude"                value="true"/>
+      <param name="broadcast_utm_transform"      value="true"/>
+      <!--<param name="publish_filtered_gps"    value="true"/>
+      <param name="wait_for_datum"          value="true"/>
+      <rosparam param="datum">[49.9, 9.0, 0]</rosparam>-->
+      <remap from="imu/data"          to="imu/data"/>
+      <remap from="odometry/filtered" to="odometry/global_filtered"/>
+      <remap from="gps/fix"           to="navsat/fix"/>
+    </node>
+    <node pkg="robot_localization" type="ekf_localization_node" name="global_ekf_localization" ns="$(arg ns)">
+      <rosparam command="load" file="$(find multi_jackal_nav)/params/global_ekf.yaml"/>
+      <param name="map_frame"       value="map"/>
+      <param name="odom_frame"      value="$(arg ns)/odom"/>
+      <param name="base_link_frame" value="$(arg ns)/base_link"/>
+      <param name="world_frame"     value="map"/>
+      <rosparam param="initial_state" subst_value="true">
+         [   $(arg x),     $(arg y),   $(arg z),
+          $(arg roll), $(arg pitch), $(arg yaw),
+                  0.0,          0.0,        0.0,
+                  0.0,          0.0,        0.0,
+                  0.0,          0.0,        0.0]
+      </rosparam>
+      <remap from="odometry/filtered" to="odometry/global_filtered"/>
+    </node>
+  </group>
+
+  <!-- If the Jackals do not have a global position estimate (i.e. something to
+       publish the map->odom link, usually a 'robot_localization' node with GPS),
+       Then the transform from map->odom can be produced statically. The start 
+       position must match the start position used in Gazebo but Gazebo will 
+       handle rotation transform.
+       (x y z yaw pitch roll frame_id child_frame_id period_in_ms) -->
+  <group if="$(arg use_global_tf)">
+    <node pkg="tf" type="static_transform_publisher" name="static_map_odom_tf" ns="$(arg ns)"
+        args="$(arg x) $(arg y) $(arg z) 0 0 0 map $(arg ns)/odom 100"/>
+  </group>
+  
+  <!-- Move base. Takes desired location commands and sends velocity commands to get it there. -->
+  <group if="$(arg use_move_base)">
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" ns="$(arg ns)" output="screen">
+      <rosparam file="$(find multi_jackal_nav)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
+      <rosparam file="$(find multi_jackal_nav)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
+      <rosparam file="$(find multi_jackal_nav)/params/odom_nav_params/global_costmap_params.yaml" command="load" />
+      <rosparam file="$(find multi_jackal_nav)/params/odom_nav_params/local_costmap_params.yaml"  command="load" />
+      <rosparam file="$(find multi_jackal_nav)/params/base_local_planner_params.yaml" command="load" />
+      <rosparam file="$(find multi_jackal_nav)/params/move_base_params.yaml" command="load" />
+      <param name="base_global_planner" type="string" value="global_planner/GlobalPlanner" /> <!--value="navfn/NavfnROS" /> -->
+      <param name="base_local_planner"                value="base_local_planner/TrajectoryPlannerROS"/>
+      <param name="global_costmap/global_frame"       value="$(arg ns)/odom"/>
+      <param name="global_costmap/robot_base_frame"   value="$(arg ns)/base_link"/>
+      <param name="local_costmap/global_frame"        value="$(arg ns)/odom"/>
+      <param name="local_costmap/robot_base_frame"    value="$(arg ns)/base_link"/>
+      <rosparam param="global_costmap/obstacles_layer/scan" subst_value="true">
+        {sensor_frame: $(arg ns)/front_laser,
+         data_type: LaserScan,
+         topic: front/scan,
+         marking: true,
+         clearing: true,
+         min_obstacle_height: -2.0,
+         max_obstacle_height: 2.0,
+         obstacle_range: 2.5,
+         raytrace_range: 3.0}
+      </rosparam>
+      <rosparam param="local_costmap/obstacles_layer/scan" subst_value="true">
+        {sensor_frame: $(arg ns)/front_laser,
+         data_type: LaserScan,
+         topic: front/scan,
+         marking: true,
+         clearing: true,
+         min_obstacle_height: -2.0,
+         max_obstacle_height: 2.0,
+         obstacle_range: 2.5,
+         raytrace_range: 3.0}
+      </rosparam>
+      <remap from="odom"    to="odometry/filtered" />
+      <remap from="cmd_vel" to="jackal_velocity_controller/cmd_vel"/>
+    </node>
+  </group>
+
+</launch>

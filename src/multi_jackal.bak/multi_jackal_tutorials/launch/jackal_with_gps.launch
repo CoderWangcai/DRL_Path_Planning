@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<!-- A bit misleading, all the jackal sims have GPS, but this one uses it to 
+     create the map->odom transformation, rather than using a static TF. -->
+
+<launch>
+
+  <arg name="ns"        default="jackal0"/>
+  <arg name="gui"       default="false"/>
+  <arg name="rviz"      default="false"/>
+  <arg name="config"    default="base"/>
+  <arg name="config_id" default="0"/>
+
+  <!-- Start Gazebo with an empty world. -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui"          value="false"/>
+    <arg name="world_name"   value="$(find multi_jackal_tutorials)/worlds/empty.world"/>
+  </include>
+  
+  <!-- Spawn the robot. -->
+  <include file="$(find multi_jackal_base)/launch/jackal_base.launch">
+    <arg name="ns"             value="$(arg ns)"/>
+    <arg name="config"         value="$(arg config)"/>
+    <arg name="config_id"      value="$(arg config_id)"/>
+    <arg name="use_move_base"  value="true"/>
+    <arg name="use_global_ekf" value="true"/>
+    <arg name="use_global_tf"  value="false"/>
+  </include>
+  
+  <!-- View in RVIZ. -->
+  <group if="$(arg rviz)">
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find multi_jackal_tutorials)/rviz/jackal_with_gps.rviz" >
+      <remap from="/move_base_simple/goal" to="/$(arg ns)/move_base_simple/goal"/>
+    </node>
+  </group>
+
+</launch>

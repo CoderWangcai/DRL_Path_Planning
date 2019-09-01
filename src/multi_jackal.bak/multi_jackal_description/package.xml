@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package>
+  <name>multi_jackal_description</name>
+  <version>0.0.5</version>
+  <description>Spawns the Jackal model.</description>
+  <maintainer email="nick.dave.sullivan@gmail.com">Nick Sullivan</maintainer>
+  <author     email="nick.dave.sullivan@gmail.com">Nick Sullivan</author>
+  <license>BSD</license>
+  <url>http://ros.org/wiki/multi_jackal_description</url>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roslaunch</build_depend>
+  <build_depend>gazebo_ros</build_depend>
+  <build_depend>robot_state_publisher</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>urdf</build_depend>
+  <build_depend>xacro</build_depend>
+  <build_depend>lms1xx</build_depend>
+  <build_depend>pointgrey_camera_driver</build_depend>
+  <build_depend>pointgrey_camera_description</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <run_depend>gazebo_ros</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>urdf</run_depend>
+  <run_depend>xacro</run_depend>
+  <run_depend>lms1xx</run_depend>
+  <run_depend>pointgrey_camera_driver</run_depend>
+  <run_depend>pointgrey_camera_description</run_depend>
+  <run_depend>nav_msgs</run_depend>
+  <export>
+  </export>
+</package>

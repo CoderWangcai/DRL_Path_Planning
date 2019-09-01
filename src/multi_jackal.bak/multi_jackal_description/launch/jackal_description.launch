@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<!-- This file publishes the robot joint states, and sets the robot description
+     parameter for creating it in gazebo. The 'config' value must match a file
+     present in the urdf/configs folder. -->
+
+<launch>
+  <arg name="ns"        default="jackal"/>
+  <arg name="config"    default="base" />
+  <arg name="config_id" default="0"/>
+  <arg name="gps_rate"  default="1"/>
+  <arg name="gps_drift" default="0.0001"/>
+
+  <!-- Get the robot description. The second line in command just sets a flag
+     which is used in accessories.urdf.xacro. The third calls xacro to load
+     the description into the parameter. -->
+  <param name="/$(arg ns)/robot_description"
+         command="$(find multi_jackal_description)/scripts/env_run
+                  $(find multi_jackal_description)/urdf/configs/$(arg config)
+                  $(find xacro)/xacro '$(find multi_jackal_description)/urdf/jackal.urdf.xacro' 
+                      '--inorder' 'namespace:=$(arg ns)' 'config_id:=$(arg config_id)'
+                      'gps_rate:=$(arg gps_rate)' 'gps_drift:=$(arg gps_drift)'" />
+
+  <!-- Publish the robot joints. -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" ns="$(arg ns)">
+    <param name="tf_prefix"         value="$(arg ns)"/>
+    <param name="robot_description" value="/$(arg ns)/robot_description"/>
+  </node>
+
+</launch>

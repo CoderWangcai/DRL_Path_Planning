@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<robot >
+  
+  <!-- Front camera. -->
+  <!--<joint name="front_camera_mount_joint" type="fixed">
+    <origin xyz="0.060 0 0" rpy="0 0 0" />
+    <parent link="front_mount" />
+    <child link="front_camera_mount" />
+  </joint>
+
+  <link name="front_camera_mount" />
+
+  <joint name="front_camera_pivot_joint" type="fixed">
+    <origin xyz="0 0 0.035" rpy="0 0 0" />
+    <parent link="front_camera_mount" />
+    <child link="front_camera_pivot" />
+  </joint>
+
+  <link name="front_camera_pivot" />
+
+  <pointgrey_flea3 frame="front_camera" name="front"
+                          camera_x="0.0754" camera_y="0.029" camera_z="0.035"
+                          camera_mass="0.085" hfov="1.0471975512" fps="60" width="640" height="512"/>
+
+  <joint name="front_camera_bracket_joint" type="fixed">
+    <origin xyz="0.030 0 0.008" rpy="0 $(optenv FLEA3_CAMERA_TILT 0) 0" />
+    <parent link="front_camera_pivot" />
+    <child link="front_camera" />
+  </joint>-->
+    
+  <!-- Rear camera. INCOMPLETE, NO IMAGE CREATED.-->
+  <joint name="rear_camera_mount_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="rear_mount" />
+    <child link="rear_camera" />
+  </joint>
+
+  <link name="rear_camera">
+    <visual>
+      <origin xyz="0.035 -0.050 0.072" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://multi_jackal_description/meshes/m1013.stl"/>
+      </geometry>
+      <material name="axis_white">
+        <color rgba="0.8 0.8 0.8 1.0" />
+      </material>
+    </visual>
+  </link>
+
+</robot>

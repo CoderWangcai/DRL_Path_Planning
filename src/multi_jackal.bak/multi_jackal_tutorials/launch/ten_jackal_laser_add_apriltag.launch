@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+
+<!-- Launches Jackal Gazebo simulation in an empty world. -->
+
+<launch>
+  <arg name="gui"        default="true"/>
+  <arg name="rviz"       default="false"/>
+  <arg name="ns0"        default="jackal0"/>
+  <arg name="ns1"        default="jackal1"/>
+  <arg name="ns2"        default="jackal2"/>
+  <arg name="ns3"        default="jackal3"/>
+  <arg name="ns4"        default="jackal4"/>
+  <arg name="ns5"        default="jackal5"/>
+  <arg name="ns6"        default="jackal6"/>
+  <arg name="ns7"        default="jackal7"/>
+  <arg name="ns8"        default="jackal8"/>
+  <arg name="ns9"        default="jackal9"/>
+  <arg name="ns10"        default="jackal10"/>
+  <arg name="config0"    default="laser_add_apriltags"/>
+  <arg name="config0_id" default="0"/>
+  <arg name="config1"    default="laser_add_apriltags"/>
+  <arg name="config1_id" default="1"/>
+  <arg name="config2"    default="laser_add_apriltags"/>
+  <arg name="config2_id" default="2"/>
+  <arg name="config3"    default="laser_add_apriltags"/>
+  <arg name="config3_id" default="3"/>
+  <arg name="config4"    default="laser_add_apriltags"/>
+  <arg name="config4_id" default="4"/>
+  <arg name="config5"    default="laser_add_apriltags"/>
+  <arg name="config5_id" default="5"/>
+  <arg name="config6"    default="laser_add_apriltags"/>
+  <arg name="config6_id" default="6"/>
+  <arg name="config7"    default="laser_add_apriltags"/>
+  <arg name="config7_id" default="7"/>
+  <arg name="config8"    default="laser_add_apriltags"/>
+  <arg name="config8_id" default="8"/>
+  <arg name="config9"    default="laser_add_apriltags"/>
+  <arg name="config9_id" default="9"/>
+  <arg name="config10"    default="bumblebee_add_laser"/>
+  <arg name="config10_id" default="10"/>
+  <arg name="world"      default="10obstacle_sensor_30m_5jackal.world"/> 
+  
+  <!-- Start Gazebo with an empty world. -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui"          value="$(arg gui)"/>	
+    <arg name="world_name"   value="$(find multi_jackal_tutorials)/worlds/$(arg world)"/>
+  </include>
+  
+  <!-- Spawn the robots. -->
+  <include file="$(find multi_jackal_base)/launch/jackal_base.launch">
+    <arg name="ns"            value="$(arg ns0)"/>
+    <arg name="config"        value="$(arg config0)"/>
+    <arg name="config_id"     value="$(arg config0_id)"/>
+    <arg name="use_move_base" value="true"/>
+    <arg name="x"             value="2"/>
+    <arg name="y"             value="-4"/>
+    <arg name="yaw"           value="0.7"/>
+  </include>
+  <include file="$(find multi_jackal_base)/launch/jackal_base.launch">
+    <arg name="ns"            value="$(arg ns1)"/>
+    <arg name="config"        value="$(arg config1)"/>
+    <arg name="config_id"     value="$(arg config1_id)"/>
+    <arg name="use_move_base" value="true"/>
+    <arg name="x"             value="5"/>
+  </include>
+  <include file="$(find multi_jackal_base)/launch/jackal_base.launch">
+    <arg name="ns"            value="$(arg ns2)"/>
+    <arg name="config"        value="$(arg config2)"/>
+    <arg name="config_id"     value="$(arg config2_id)"/>
+    <arg name="use_move_base" value="true"/>
+    <arg name="x"             value="0"/>
+    <arg name="y"             value="3"/>
+    <arg name="yaw"           value="-1.57"/>
+  </include>
+  <include file="$(find multi_jackal_base)/launch/jackal_base.launch">
+    <arg name="ns"            value="$(arg ns3)"/>
+    <arg name="config"        value="$(arg config3)"/>
+    <arg name="config_id"     value="$(arg config3_id)"/>
+    <arg name="use_move_base" value="true"/>
+    <arg name="x"             value="0"/>
+    <arg name="y"             value="5"/>
+    <arg name="yaw"           value="-1.57"/>
+  </include>
+  <include file="$(find multi_jackal_base)/launch/jackal_base.launch">
+    <arg name="ns"            value="$(arg ns4)"/>
+    <arg name="config"        value="$(arg config4)"/>
+    <arg name="config_id"     value="$(arg config4_id)"/>
+    <arg name="use_move_base" value="true"/>
+    <arg name="x"             value="5"/>
+    <arg name="y"             value="5"/>
+    <arg name="yaw"           value="-1.57"/>
+  </include>
+
+  <include file="$(find multi_jackal_base)/launch/jackal_base.launch">
+    <arg name="ns"            value="$(arg ns5)"/>
+    <arg name="config"        value="$(arg config5)"/>
+    <arg name="config_id"     value="$(arg config5_id)"/>
+    <arg name="use_move_base" value="true"/>
+    <arg name="x"             value="1"/>
+    <arg name="y"             value="-1"/>
+    <arg name="yaw"           value="-1.57"/>
+  </include>
+
+  <include file="$(find multi_jackal_base)/launch/jackal_base.launch">
+    <arg name="ns"            value="$(arg ns6)"/>
+    <arg name="config"        value="$(arg config6)"/>
+    <arg name="config_id"     value="$(arg config6_id)"/>
+    <arg name="use_move_base" value="true"/>
+    <arg name="x"             value="2"/>
+    <arg name="y"             value="-1"/>
+    <arg name="yaw"           value="-1.57"/>
+  </include>
+
+    <include file="$(find multi_jackal_base)/launch/jackal_base.launch">
+    <arg name="ns"            value="$(arg ns7)"/>
+    <arg name="config"        value="$(arg config7)"/>
+    <arg name="config_id"     value="$(arg config7_id)"/>
+    <arg name="use_move_base" value="true"/>
+    <arg name="x"             value="3"/>
+    <arg name="y"             value="-1"/>
+    <arg name="yaw"           value="-1.57"/>
+  </include>
+    <include file="$(find multi_jackal_base)/launch/jackal_base.launch">
+    <arg name="ns"            value="$(arg ns8)"/>
+    <arg name="config"        value="$(arg config8)"/>
+    <arg name="config_id"     value="$(arg config8_id)"/>
+    <arg name="use_move_base" value="true"/>
+    <arg name="x"             value="4"/>
+    <arg name="y"             value="-1"/>
+    <arg name="yaw"           value="-1.57"/>
+  </include>
+    <include file="$(find multi_jackal_base)/launch/jackal_base.launch">
+    <arg name="ns"            value="$(arg ns9)"/>
+    <arg name="config"        value="$(arg config9)"/>
+    <arg name="config_id"     value="$(arg config9_id)"/>
+    <arg name="use_move_base" value="true"/>
+    <arg name="x"             value="5"/>
+    <arg name="y"             value="-1"/>
+    <arg name="yaw"           value="-1.57"/>
+  </include>
+    <include file="$(find multi_jackal_base)/launch/jackal_base.launch">
+    <arg name="ns"            value="$(arg ns10)"/>
+    <arg name="config"        value="$(arg config10)"/>
+    <arg name="config_id"     value="$(arg config10_id)"/>
+    <arg name="use_move_base" value="true"/>
+    <arg name="x"             value="6"/>
+    <arg name="y"             value="-1"/>
+    <arg name="yaw"           value="-1.57"/>
+  </include>
+  <!-- View in RVIZ. -->
+  <group if="$(arg rviz)">
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find multi_jackal_tutorials)/rviz/three_jackal.rviz" >
+      <remap from="/move_base_simple/goal" to="/$(arg ns2)/move_base_simple/goal"/>
+    </node>
+  </group>
+</launch>

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+
+<!-- This is generates a Jackal in gazebo. It must have a unique namespace in 
+     order to generate multiple Jackals. The default position can be specified. -->
+     
+<launch>
+  <!-- Arguments to set the namespace, start position. -->
+  <arg name="ns"        default="jackal0"/>			<!-- Must be unique for each robot. -->
+  <arg name="x"         default="0"/>
+  <arg name="y"         default="0"/>
+  <arg name="z"         default="0"/>
+  <arg name="roll"      default="0"/>
+  <arg name="pitch"     default="0"/>
+  <arg name="yaw"       default="0"/>
+  <arg name="config"    default="base" /> 		<!-- options in description/urdf/configs-->
+  <arg name="config_id" default="0"/>
+  <arg name="use_move_base"  default="false"/> <!-- Allows navigation to a location. -->
+  <arg name="use_global_tf"  default="true"/>
+  <arg name="use_global_ekf" default="false"/> <!-- Uses GPS instead of a static 0,0,0 TF -->
+	<arg name="gps_rate"  default="1"/>
+  <arg name="gps_drift" default="0.0001"/>
+  
+  <!-- Launch the control portion of the Jackal robot. -->
+  <include file="$(find multi_jackal_control)/launch/jackal_control.launch">
+    <arg name="ns" value="$(arg ns)"/>
+  </include>
+
+  <!-- Generate the model for gazebo and publish the robots joint states. -->
+  <include file="$(find multi_jackal_description)/launch/jackal_description.launch">
+    <arg name="ns"        value="$(arg ns)"/>
+    <arg name="config"    value="$(arg config)"/>
+    <arg name="config_id" value="$(arg config_id)"/>
+    <arg name="gps_rate"  value="$(arg gps_rate)"/>
+    <arg name="gps_drift" value="$(arg gps_drift)"/>
+  </include>
+
+  <!-- Start the jackal navigation. 
+  <include file="$(find multi_jackal_nav)/launch/jackal_nav.launch">
+    <arg name="ns"    value="$(arg ns)"/>
+    <arg name="x"     value="$(arg x)"/>
+    <arg name="y"     value="$(arg y)"/>
+    <arg name="z"     value="$(arg z)"/>
+    <arg name="roll"  value="$(arg roll)"/>
+    <arg name="pitch" value="$(arg pitch)"/>
+    <arg name="yaw"   value="$(arg yaw)"/>
+    <arg name="use_move_base"  value="$(arg use_move_base)"/>
+    <arg name="use_global_tf"  value="$(arg use_global_tf)"/>
+    <arg name="use_global_ekf" value="$(arg use_global_ekf)"/>
+  </include>-->
+
+  <!-- Spawn the model into gazebo. -->
+  <node name="spawn_create_model" pkg="gazebo_ros" type="spawn_model" ns="$(arg ns)"
+    args="-x $(arg x) -y $(arg y) -z $(arg z) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)
+    -urdf -param /$(arg ns)/robot_description -model $(arg ns)"/>
+	
+</launch>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- This file can be edited to provide non-standard accessories. There
+       must be a file in the config folder that sets the required variable to 1.
+       The accessory can then be enabled by setting the 'config' argument in the
+       launch files. -->
+  
+  
+  <!-- Box with AprilTag markers on each face. -->
+  <xacro:if value="$(optenv JACKAL_APRILTAG 0)">
+    <xacro:include filename="accessories/apriltag_box.urdf.xacro" />
+  </xacro:if>
+  
+  <!-- Box with ARTrackAlvar markers on each face. -->
+  <xacro:if value="$(optenv JACKAL_ALVARTAG 0)">
+    <xacro:include filename="accessories/alvartag_box.urdf.xacro" />
+  </xacro:if>
+  
+  <!-- Front and rear cameras. -->
+  <xacro:if value="$(optenv JACKAL_TWOCAMS 0)">
+    <xacro:include filename="accessories/camera_mount.urdf.xacro" />
+    <xacro:include filename="accessories/twocams.urdf.xacro"/>
+  </xacro:if>
+  
+  <!-- Box with AprilTag markers on each face, lifted up slightly. -->
+  <xacro:if value="$(optenv JACKAL_APRILTAG_POLE 0)">
+    <xacro:include filename="accessories/apriltag_box_with_pole.urdf.xacro" />
+  </xacro:if>
+  
+</robot>

@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<!-- This is for loading a box with different tags on each side. -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:property name="pole_height" value="0.1" />
+  <xacro:property name="pole_radius" value="0.05" />
+  
+  <joint name="pole_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="pole_link" />
+    <origin xyz="0 0 0.19" rpy="0 0 0" />
+    <axis xyz="0 0 0" />
+  </joint>
+  
+  <link name="pole_link">
+    <inertial>
+      <origin xyz="0 0 ${pole_height/2}" />
+      <mass value="10.0" />
+      <inertia  ixx="0.4" ixy="0.0"  ixz="0.0"  iyy="0.4"  iyz="0.0"  izz="0.2" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 ${pole_height/2}"/>
+      <geometry>
+        <cylinder length="${pole_height}" radius="${pole_radius}"/>
+      </geometry>
+      <material name="light_grey"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 ${pole_height/2}"/>
+      <geometry>
+        <cylinder length="${pole_height}" radius="${pole_radius}"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="ar_tag_joint" type="fixed">
+    <parent link="pole_link" />
+    <child link="tag_link" />
+    <origin xyz="0 0 ${pole_height}" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+  </joint>
+  
+  <link name="tag_link">
+    <inertial>
+      <origin xyz="0 0 0" />
+      <mass value="0.001" />
+      <inertia  ixx="1.0" ixy="0.0"  ixz="0.0"  iyy="1.0"  iyz="0.0"  izz="1.0" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.15"/>
+      <geometry>
+        <mesh filename="package://multi_jackal_description/meshes/apriltags/apriltags$(arg config_id).dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.15"/>
+      <geometry>
+        <box size="0.3 0.3 0.3" />
+      </geometry>
+    </collision>
+  </link>
+
+  
+  <!-- Robot 0 has tags 0 to 5, robot 1 has tags 6 to 10 etc.
+       From the perspective of the host robot, the order is: 
+       0: front
+       1: right
+       2: back (upside down)
+       3: left (upside down)
+       4: top (rotated 90deg CW)
+       5: bottom (upside down)
+       
+       If viewed in RVIZ, set the camera to view a face so that it is the right
+       way up. Then each face should have blue (z) coming out of the face,
+       and red going right.
+       
+       For some reason, pose_cov_ops can screw up when using 90 degree angles.
+       A quick fix is setting the TF to be slightly wrong with a 91 degree angle.
+       
+       -->
+       
+  <xacro:property name="num" value="$(arg config_id)" />
+  <xacro:property name="width" value="0.3"/>
+  
+  <link name="ar_marker_${num*6}"></link>    
+  <joint name="ar_marker_${num*6}_joint" type="fixed">
+    <parent link="tag_link" />
+    <child link="ar_marker_${num*6}" />
+    <origin xyz="${width/2} 0 ${width/2}" rpy="1.58 0 1.58"/>
+  </joint>
+  <link name="ar_marker_${num*6+1}"></link>
+  <joint name="ar_marker_${num*6+1}_joint" type="fixed">
+    <parent link="tag_link" />
+    <child link="ar_marker_${num*6+1}" />
+    <origin xyz="0 -${width/2} ${width/2}" rpy="1.571 0 0"/>
+  </joint>
+  <link name="ar_marker_${num*6+2}"></link>
+  <joint name="ar_marker_${num*6+2}_joint" type="fixed">
+    <parent link="tag_link" />
+    <child link="ar_marker_${num*6+2}" />
+    <origin xyz="-${width/2} 0 ${width/2}" rpy="-1.571 0 1.571"/>
+  </joint>
+  <link name="ar_marker_${num*6+3}"></link>
+  <joint name="ar_marker_${num*6+3}_joint" type="fixed">
+    <parent link="tag_link" />
+    <child link="ar_marker_${num*6+3}" />
+    <origin xyz="0 ${width/2} ${width/2}" rpy="-1.571 0 0"/>
+  </joint>
+  <link name="ar_marker_${num*6+4}"></link>
+  <joint name="ar_marker_${num*6+4}_joint" type="fixed">
+    <parent link="tag_link" />
+    <child link="ar_marker_${num*6+4}" />
+    <origin xyz="0 0 ${width}" rpy="0 0 0"/>
+  </joint>
+  <link name="ar_marker_${num*6+5}"></link>
+  <joint name="ar_marker_$${num*6+5}_joint" type="fixed">
+    <parent link="tag_link" />
+    <child link="ar_marker_${num*6+5}" />
+    <origin xyz="0 0 0" rpy="3.1416 0 1.571"/>
+  </joint>
+
+  <gazebo reference="base_link">
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+ 
+</robot>

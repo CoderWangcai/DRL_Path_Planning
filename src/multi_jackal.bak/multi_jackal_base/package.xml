@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package>
+  <name>multi_jackal_base</name>
+  <version>0.0.5</version>
+  <description>The Jackal simulation base that combines all components.</description>
+  <maintainer email="nick.dave.sullivan@gmail.com">Nick Sullivan</maintainer>
+  <author     email="nick.dave.sullivan@gmail.com">Nick Sullivan</author>
+  <license>BSD</license>
+  <url>http://ros.org/wiki/multi_jackal_base</url>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roslaunch</build_depend>
+  <run_depend>multi_jackal_control</run_depend>
+  <run_depend>multi_jackal_nav</run_depend>
+  <run_depend>multi_jackal_description</run_depend>
+  <run_depend>controller_manager</run_depend>
+  <run_depend>gazebo_ros</run_depend>
+  <run_depend>interactive_marker_twist_server</run_depend>
+  <run_depend>robot_localization</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>urdf</run_depend>
+  <run_depend>xacro</run_depend>
+  <export>
+  </export>
+</package>
