@@ -11,7 +11,7 @@ Date: 06/2019
 # world文件：obstacle_sensor.world
 
 # 导入的网络模型：
-# .../jackal/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_obstacle_world_30m_2_2019_06_02
+# .../DRL_Path_Planning/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_obstacle_world_30m_2_2019_06_02
 
 # Import modules
 import tensorflow as tf
@@ -59,7 +59,7 @@ class DQN:
         self.Epsilon            = 0.5
 
         # 训练好的模型
-        self.load_path = '.../jackal/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_obstacle_world_30m_2_2019_06_02'
+        self.load_path = '.../DRL_Path_Planning/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_obstacle_world_30m_2_2019_06_02'
 
         self.step    = 1
         self.score   = 0
@@ -412,38 +412,38 @@ class DQN:
                 obs_pos_x[i].append(0)
                 obs_pos_y[i].append(0)
 
-        filename1 = '.../jackal/src/tf_pkg/scripts/14_static_obstacle_start_point_x.txt'
+        filename1 = '.../DRL_Path_Planning/src/tf_pkg/scripts/14_static_obstacle_start_point_x.txt'
         with open(filename1, 'r') as f:
             lines = f.readlines()
             for line in lines:
                 Start_x = [float(s) for s in line.split()]
                 start_x.append(Start_x[0])
-        filename2 = '.../jackal/src/tf_pkg/scripts/14_static_obstacle_start_point_y.txt'
+        filename2 = '.../DRL_Path_Planning/src/tf_pkg/scripts/14_static_obstacle_start_point_y.txt'
         with open(filename2, 'r') as f:
             lines = f.readlines()
             for line in lines:
                 Start_y = [float(s) for s in line.split()]
                 start_y.append(Start_y[0])
-        filename3 = '.../jackal/src/tf_pkg/scripts/14_static_obstacle_goal_point_x.txt'
+        filename3 = '.../DRL_Path_Planning/src/tf_pkg/scripts/14_static_obstacle_goal_point_x.txt'
         with open(filename3, 'r') as f:
             lines = f.readlines()
             for line in lines:
                 Goal_x = [float(s) for s in line.split()]
                 goal_x.append(Goal_x[0])
-        filename4 = '.../jackal/src/tf_pkg/scripts/14_static_obstacle_goal_point_y.txt'
+        filename4 = '.../DRL_Path_Planning/src/tf_pkg/scripts/14_static_obstacle_goal_point_y.txt'
         with open(filename4, 'r') as f:
             lines = f.readlines()
             for line in lines:
                 Goal_y = [float(s) for s in line.split()]
                 goal_y.append(Goal_y[0])  
-        filename5 = '.../jackal/src/tf_pkg/scripts/14_static_obstacle_randangle.txt'
+        filename5 = '.../DRL_Path_Planning/src/tf_pkg/scripts/14_static_obstacle_randangle.txt'
         with open(filename5, 'r') as f:
             lines = f.readlines()
             for line in lines:
                 Randangle = [float(s) for s in line.split()]
                 randangle.append(Randangle[0])
         # 读取障碍
-        filename = '.../jackal/src/tf_pkg/scripts/14_static_obstacle_obs_pos_x.txt'
+        filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/14_static_obstacle_obs_pos_x.txt'
         with open(filename, 'r') as f:
             lines = f.readlines()
             i = 0
@@ -452,7 +452,7 @@ class DQN:
                 for j in range(10):     
                     obs_pos_x[i][j] = float(OBS_x[j])
                 i += 1
-        filename = '.../jackal/src/tf_pkg/scripts/14_static_obstacle_obs_pos_y.txt'
+        filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/14_static_obstacle_obs_pos_y.txt'
         with open(filename, 'r') as f:
             lines = f.readlines()
             i = 0
@@ -511,8 +511,8 @@ class DQN:
             if terminal == True:
                 JACKAL_x = np.array(jackal_x)
                 JACKAL_y = np.array(jackal_y)
-                np.savetxt('.../jackal/src/tf_pkg/scripts/10_D3QN_PER_image_add_sensor_obstacle_world_30m_test_JACKAL_PATH_x'+'_'+str(i)+'.txt', JACKAL_x, delimiter=',')
-                np.savetxt('.../jackal/src/tf_pkg/scripts/10_D3QN_PER_image_add_sensor_obstacle_world_30m_test_JACKAL_PATH_y'+'_'+str(i)+'.txt', JACKAL_y, delimiter=',')
+                np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/10_D3QN_PER_image_add_sensor_obstacle_world_30m_test_JACKAL_PATH_x'+'_'+str(i)+'.txt', JACKAL_x, delimiter=',')
+                np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/10_D3QN_PER_image_add_sensor_obstacle_world_30m_test_JACKAL_PATH_y'+'_'+str(i)+'.txt', JACKAL_y, delimiter=',')
                 jackal_x  = []
                 jackal_y  = []
                 
@@ -523,9 +523,9 @@ class DQN:
                 reward_list.append(self.score)
                 reward_array = np.array(reward_list)
                 # 第一次训练
-                np.savetxt('.../jackal/src/tf_pkg/scripts/10_D3QN_PER_image_add_sensor_obstacle_world_30m_reward_test.txt', reward_array, delimiter=',')
+                np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/10_D3QN_PER_image_add_sensor_obstacle_world_30m_reward_test.txt', reward_array, delimiter=',')
                 # 第二次训练
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_static_obstacle_world_30m_results/10_D3QN_PER_image_add_sensor_obstacle_world_30m_reward_2_test.txt', reward_array, delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_static_obstacle_world_30m_results/10_D3QN_PER_image_add_sensor_obstacle_world_30m_reward_2_test.txt', reward_array, delimiter=',')
 
                 self.episode += 1
 

@@ -57,28 +57,28 @@ for i in range(num_test):
     
     plt.figure(figsize=(10, 10))
     # 读取起点的x
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__start_x'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__start_x'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
             Start_x = [float(s) for s in line.split()]
             start_x.append(Start_x[0])
     # 读取起点的y
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__start_y'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__start_y'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
             Start_y = [float(s) for s in line.split()]
             start_y.append(Start_y[0])
     # 读取终点的x
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__goal_x'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__goal_x'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
             Goal_x = [float(s) for s in line.split()]
             goal_x.append(Goal_x[0])
     # 读取终点的y
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__goal_y'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__goal_y'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
@@ -94,13 +94,13 @@ for i in range(num_test):
     plt.plot(x, y, label='line', color='dodgerblue', linewidth=2.0)
     
     # 读取动态障碍jackal0
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL0_PATH_x'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL0_PATH_x'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
             JACKAL0_x = [float(s) for s in line.split()]
             jackal0_x.append(JACKAL0_x[0])
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL0_PATH_y'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL0_PATH_y'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
@@ -120,13 +120,13 @@ for i in range(num_test):
     # plt.plot(jackal0_x, jackal0_y, label='line', color='coral', linewidth=2.0)
     
     # 读取动态障碍jackal1
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL1_PATH_x'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL1_PATH_x'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
             JACKAL1_x = [float(s) for s in line.split()]
             jackal1_x.append(JACKAL1_x[0])
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL1_PATH_y'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL1_PATH_y'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
@@ -145,13 +145,13 @@ for i in range(num_test):
             plt.text(jackal1_x[j]-0.25, jackal1_y[j]-0.25, str(j), size = 14, color='cornflowerblue')
 
     # 读取动态障碍jackal2
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL2_PATH_x'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL2_PATH_x'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
             JACKAL2_x = [float(s) for s in line.split()]
             jackal2_x.append(JACKAL2_x[0])
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL2_PATH_y'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL2_PATH_y'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
@@ -170,13 +170,13 @@ for i in range(num_test):
             plt.text(jackal2_x[j]-0.25, jackal2_y[j]-0.25, str(j), size = 14,color='limegreen')
 
     # 读取动态障碍jackal3
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL3_PATH_x'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL3_PATH_x'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
             JACKAL3_x = [float(s) for s in line.split()]
             jackal3_x.append(JACKAL3_x[0])
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL3_PATH_y'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL3_PATH_y'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
@@ -195,13 +195,13 @@ for i in range(num_test):
             plt.text(jackal3_x[j]-0.25, jackal3_y[j]-0.25, str(j), size = 14, color='red')
 
     # 读取动态障碍jackal4
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL4_PATH_x'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL4_PATH_x'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
             JACKAL4_x = [float(s) for s in line.split()]
             jackal4_x.append(JACKAL4_x[0])
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL4_PATH_y'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL4_PATH_y'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
@@ -220,13 +220,13 @@ for i in range(num_test):
             plt.text(jackal4_x[j]-0.25, jackal4_y[j]-0.25, str(j), size = 14,color='orchid')
 
     # 读取动态障碍jackal5
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL5_PATH_x'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL5_PATH_x'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
             JACKAL5_x = [float(s) for s in line.split()]
             jackal5_x.append(JACKAL5_x[0])
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL5_PATH_y'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL5_PATH_y'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
@@ -245,13 +245,13 @@ for i in range(num_test):
             plt.text(jackal5_x[j]-0.25, jackal5_y[j]-0.25, str(j), size = 14,color='olivedrab')
 
     # 读取动态障碍jackal6
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL6_PATH_x'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL6_PATH_x'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
             JACKAL6_x = [float(s) for s in line.split()]
             jackal6_x.append(JACKAL6_x[0])
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL6_PATH_y'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL6_PATH_y'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
@@ -270,13 +270,13 @@ for i in range(num_test):
             plt.text(jackal6_x[j]-0.25, jackal6_y[j]-0.25, str(j), size = 14,color='gray')
 
     # 读取动态障碍jackal7
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL7_PATH_x'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL7_PATH_x'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
             JACKAL7_x = [float(s) for s in line.split()]
             jackal7_x.append(JACKAL7_x[0])
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL7_PATH_y'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL7_PATH_y'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
@@ -295,13 +295,13 @@ for i in range(num_test):
             plt.text(jackal7_x[j]-0.25, jackal7_y[j]-0.25, str(j), size = 14,color='lightcoral')
 
     # 读取动态障碍jackal8
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL8_PATH_x'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL8_PATH_x'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
             JACKAL8_x = [float(s) for s in line.split()]
             jackal8_x.append(JACKAL8_x[0])
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL8_PATH_y'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL8_PATH_y'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
@@ -320,13 +320,13 @@ for i in range(num_test):
             plt.text(jackal8_x[j]-0.25, jackal8_y[j]-0.25, str(j), size = 14,color='peru')
 
     # 读取动态障碍jackal9
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL9_PATH_x'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL9_PATH_x'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
             JACKAL9_x = [float(s) for s in line.split()]
             jackal9_x.append(JACKAL9_x[0])
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL9_PATH_y'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL9_PATH_y'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
@@ -344,13 +344,13 @@ for i in range(num_test):
         if j%gap==0:
             plt.text(jackal9_x[j]-0.25, jackal9_y[j]-0.25, str(j), size = 14,color='purple')
 
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL_PATH_x'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL_PATH_x'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
             Jackal_x = [float(s) for s in line.split()]
             JACKAL_x.append(Jackal_x[0])
-    filename = '.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL_PATH_y'+'_'+str(i+1)+'.txt'
+    filename = '.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL_PATH_y'+'_'+str(i+1)+'.txt'
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
@@ -379,4 +379,4 @@ for i in range(num_test):
     
     # plt.show()
     # 保存图片
-    plt.savefig(".../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test_pathplanning_results_"+str(i+1)+".png")
+    plt.savefig(".../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test_pathplanning_results_"+str(i+1)+".png")

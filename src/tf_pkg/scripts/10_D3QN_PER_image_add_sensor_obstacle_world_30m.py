@@ -13,21 +13,21 @@ Date: 06/2019
 # 对应的环境模型为gazebo_env_D3QN_PER_image_add_sensor_empty_world_30m.py
 
 # 导入的网络模型：
-# .../jackal/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_empty_world_30m_2019_06_01
+# .../DRL_Path_Planning/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_empty_world_30m_2019_06_01
 # 对应的reward文件：
 # 10_D3QN_PER_image_add_sensor_obstacle_world_30m_reward.png
 # 10_D3QN_PER_image_add_sensor_obstacle_world_30m_reward.txt
 # 训练好的网络模型:
-# .../jackal/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_obstacle_world_30m_2019_06_01
+# .../DRL_Path_Planning/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_obstacle_world_30m_2019_06_01
 
 # 第二次训练
 # 导入的网络模型：
-# .../jackal/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_obstacle_world_30m_2019_06_01
+# .../DRL_Path_Planning/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_obstacle_world_30m_2019_06_01
 # 对应的reward文件：
 # 10_D3QN_PER_image_add_sensor_obstacle_world_30m_reward_2.png
 # 10_D3QN_PER_image_add_sensor_obstacle_world_30m_reward_2.txt
 # 训练好的网络模型:
-# .../jackal/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_obstacle_world_30m_2_2019_06_02
+# .../DRL_Path_Planning/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_obstacle_world_30m_2_2019_06_02
 
 # Import modules
 import tensorflow as tf
@@ -77,10 +77,10 @@ class DQN:
         self.Epsilon            = 0.5
 
         # 第一次训练
-        # self.load_path = '.../jackal/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_empty_world_30m_2019_06_01'
+        # self.load_path = '.../DRL_Path_Planning/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_empty_world_30m_2019_06_01'
         # 第二次训练
-        # self.load_path = '.../jackal/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_obstacle_world_30m_2019_06_01'
-        self.load_path = '.../jackal/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_obstacle_world_30m_2_2019_06_02'
+        # self.load_path = '.../DRL_Path_Planning/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_obstacle_world_30m_2019_06_01'
+        self.load_path = '.../DRL_Path_Planning/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_obstacle_world_30m_2_2019_06_02'
 
         self.step    = 1
         self.score   = 0

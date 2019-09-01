@@ -55,7 +55,7 @@ class DQN:
         self.Epsilon = 0.5
 
         # 静态障碍下训练好的模型
-        self.load_path = '.../jackal/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_obstacle_world_30m_2_2019_06_02'
+        self.load_path = '.../DRL_Path_Planning/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_obstacle_world_30m_2_2019_06_02'
 
         self.step = 1
         self.score = 0
@@ -655,12 +655,12 @@ class DQN:
         # 保存小车的起点和终点
         start_x.append(randposition[0][0])
         start_y.append(randposition[0][1])
-        # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__start_x'+'_'+'1'+'.txt', np.array(start_x), delimiter=',')
-        # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__start_y'+'_'+'1'+'.txt', np.array(start_y), delimiter=',')
+        # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__start_x'+'_'+'1'+'.txt', np.array(start_x), delimiter=',')
+        # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__start_y'+'_'+'1'+'.txt', np.array(start_y), delimiter=',')
         goal_x.append(randposition[1][0])
         goal_y.append(randposition[1][1])
-        # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__goal_x'+'_'+'1'+'.txt', np.array(goal_x), delimiter=',')
-        # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__goal_y'+'_'+'1'+'.txt', np.array(goal_y), delimiter=',')
+        # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__goal_x'+'_'+'1'+'.txt', np.array(goal_x), delimiter=',')
+        # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__goal_y'+'_'+'1'+'.txt', np.array(goal_y), delimiter=',')
 
         randangle_temp = env.reset_env(
             start=[
@@ -668,7 +668,7 @@ class DQN:
                 randposition[1][0], randposition[1][1]])
         # 保存小车的起始转角
         randangle.append(randangle_temp)
-        # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__randangle'+'_'+'1'+'.txt', np.array(randangle), delimiter=',')
+        # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__randangle'+'_'+'1'+'.txt', np.array(randangle), delimiter=',')
 
         start_x = []
         start_y = []
@@ -781,28 +781,28 @@ class DQN:
                 terminal = True
 
             if terminal:
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL_PATH_x'+'_'+str(i)+'.txt', np.array(jackal_x), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL_PATH_y'+'_'+str(i)+'.txt', np.array(jackal_y), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL0_PATH_x'+'_'+str(i)+'.txt', np.array(jackal0_x), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL0_PATH_y'+'_'+str(i)+'.txt', np.array(jackal0_y), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL1_PATH_x'+'_'+str(i)+'.txt', np.array(jackal1_x), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL1_PATH_y'+'_'+str(i)+'.txt', np.array(jackal1_y), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL2_PATH_x'+'_'+str(i)+'.txt', np.array(jackal2_x), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL2_PATH_y'+'_'+str(i)+'.txt', np.array(jackal2_y), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL3_PATH_x'+'_'+str(i)+'.txt', np.array(jackal3_x), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL3_PATH_y'+'_'+str(i)+'.txt', np.array(jackal3_y), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL4_PATH_x'+'_'+str(i)+'.txt', np.array(jackal4_x), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL4_PATH_y'+'_'+str(i)+'.txt', np.array(jackal4_y), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL5_PATH_x'+'_'+str(i)+'.txt', np.array(jackal5_x), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL5_PATH_y'+'_'+str(i)+'.txt', np.array(jackal5_y), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL6_PATH_x'+'_'+str(i)+'.txt', np.array(jackal6_x), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL6_PATH_y'+'_'+str(i)+'.txt', np.array(jackal6_y), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL7_PATH_x'+'_'+str(i)+'.txt', np.array(jackal7_x), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL7_PATH_y'+'_'+str(i)+'.txt', np.array(jackal7_y), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL8_PATH_x'+'_'+str(i)+'.txt', np.array(jackal8_x), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL8_PATH_y'+'_'+str(i)+'.txt', np.array(jackal8_y), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL9_PATH_x'+'_'+str(i)+'.txt', np.array(jackal9_x), delimiter=',')
-                # np.savetxt('.../jackal/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL9_PATH_y'+'_'+str(i)+'.txt', np.array(jackal9_y), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL_PATH_x'+'_'+str(i)+'.txt', np.array(jackal_x), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL_PATH_y'+'_'+str(i)+'.txt', np.array(jackal_y), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL0_PATH_x'+'_'+str(i)+'.txt', np.array(jackal0_x), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL0_PATH_y'+'_'+str(i)+'.txt', np.array(jackal0_y), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL1_PATH_x'+'_'+str(i)+'.txt', np.array(jackal1_x), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL1_PATH_y'+'_'+str(i)+'.txt', np.array(jackal1_y), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL2_PATH_x'+'_'+str(i)+'.txt', np.array(jackal2_x), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL2_PATH_y'+'_'+str(i)+'.txt', np.array(jackal2_y), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL3_PATH_x'+'_'+str(i)+'.txt', np.array(jackal3_x), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL3_PATH_y'+'_'+str(i)+'.txt', np.array(jackal3_y), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL4_PATH_x'+'_'+str(i)+'.txt', np.array(jackal4_x), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL4_PATH_y'+'_'+str(i)+'.txt', np.array(jackal4_y), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL5_PATH_x'+'_'+str(i)+'.txt', np.array(jackal5_x), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL5_PATH_y'+'_'+str(i)+'.txt', np.array(jackal5_y), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL6_PATH_x'+'_'+str(i)+'.txt', np.array(jackal6_x), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL6_PATH_y'+'_'+str(i)+'.txt', np.array(jackal6_y), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL7_PATH_x'+'_'+str(i)+'.txt', np.array(jackal7_x), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL7_PATH_y'+'_'+str(i)+'.txt', np.array(jackal7_y), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL8_PATH_x'+'_'+str(i)+'.txt', np.array(jackal8_x), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL8_PATH_y'+'_'+str(i)+'.txt', np.array(jackal8_y), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL9_PATH_x'+'_'+str(i)+'.txt', np.array(jackal9_x), delimiter=',')
+                # np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_dynamic_obstacle_world_30m_results/image_add_sensor/10jackal/D3QN_PER_image_add_sensor_dynamic_10obstacle_world_30m_test__JACKAL9_PATH_y'+'_'+str(i)+'.txt', np.array(jackal9_y), delimiter=',')
                 jackal_x = []
                 jackal_y = []
                 jackal0_x = []

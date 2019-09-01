@@ -11,7 +11,7 @@ Date: 06/2019
 # world文件：empty_sensor.world
 
 # 训练好的网络模型
-# .../jackal/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_empty_world_30m_2019_06_01
+# .../DRL_Path_Planning/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_empty_world_30m_2019_06_01
 
 # Import modules
 import tensorflow as tf
@@ -56,7 +56,7 @@ class DQN:
         self.Final_epsilon      = 0.1
         self.Epsilon            = 1.0
 
-        self.load_path = '.../jackal/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_empty_world_30m_2019_06_01'
+        self.load_path = '.../DRL_Path_Planning/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_empty_world_30m_2019_06_01'
 
         self.step    = 1
         self.score   = 0
@@ -402,31 +402,31 @@ class DQN:
         # 小车的起始转角
         randangle = []
 
-        filename1 = '.../jackal/src/tf_pkg/scripts/12_start_point_x.txt'
+        filename1 = '.../DRL_Path_Planning/src/tf_pkg/scripts/12_start_point_x.txt'
         with open(filename1, 'r') as f:
             lines = f.readlines()
             for line in lines:
                 Start_x = [float(s) for s in line.split()]
                 start_x.append(Start_x[0])
-        filename2 = '.../jackal/src/tf_pkg/scripts/12_start_point_y.txt'
+        filename2 = '.../DRL_Path_Planning/src/tf_pkg/scripts/12_start_point_y.txt'
         with open(filename2, 'r') as f:
             lines = f.readlines()
             for line in lines:
                 Start_y = [float(s) for s in line.split()]
                 start_y.append(Start_y[0])
-        filename3 = '.../jackal/src/tf_pkg/scripts/12_goal_point_x.txt'
+        filename3 = '.../DRL_Path_Planning/src/tf_pkg/scripts/12_goal_point_x.txt'
         with open(filename3, 'r') as f:
             lines = f.readlines()
             for line in lines:
                 Goal_x = [float(s) for s in line.split()]
                 goal_x.append(Goal_x[0])
-        filename4 = '.../jackal/src/tf_pkg/scripts/12_goal_point_y.txt'
+        filename4 = '.../DRL_Path_Planning/src/tf_pkg/scripts/12_goal_point_y.txt'
         with open(filename4, 'r') as f:
             lines = f.readlines()
             for line in lines:
                 Goal_y = [float(s) for s in line.split()]
                 goal_y.append(Goal_y[0])  
-        filename5 = '.../jackal/src/tf_pkg/scripts/12_randangle.txt'
+        filename5 = '.../DRL_Path_Planning/src/tf_pkg/scripts/12_randangle.txt'
         with open(filename5, 'r') as f:
             lines = f.readlines()
             for line in lines:
@@ -482,8 +482,8 @@ class DQN:
             if terminal == True:
                 JACKAL_x = np.array(jackal_x)
                 JACKAL_y = np.array(jackal_y)
-                np.savetxt('.../jackal/src/tf_pkg/scripts/test_empty_world_30m_results/image_add_sensor/第二次训练/10_D3QN_PER_image_add_sensor_empty_world_30m_test_JACKAL_PATH_x'+'_'+str(i)+'.txt', JACKAL_x, delimiter=',')
-                np.savetxt('.../jackal/src/tf_pkg/scripts/test_empty_world_30m_results/image_add_sensor/第二次训练/10_D3QN_PER_image_add_sensor_empty_world_30m_test_JACKAL_PATH_y'+'_'+str(i)+'.txt', JACKAL_y, delimiter=',')
+                np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_empty_world_30m_results/image_add_sensor/第二次训练/10_D3QN_PER_image_add_sensor_empty_world_30m_test_JACKAL_PATH_x'+'_'+str(i)+'.txt', JACKAL_x, delimiter=',')
+                np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_empty_world_30m_results/image_add_sensor/第二次训练/10_D3QN_PER_image_add_sensor_empty_world_30m_test_JACKAL_PATH_y'+'_'+str(i)+'.txt', JACKAL_y, delimiter=',')
                 jackal_x  = []
                 jackal_y  = []
                 
@@ -493,7 +493,7 @@ class DQN:
 
                 reward_list.append(self.score)
                 reward_array = np.array(reward_list)
-                np.savetxt('.../jackal/src/tf_pkg/scripts/test_empty_world_30m_results/image_add_sensor/第二次训练/reward_pic/10_D3QN_PER_image_add_sensor_empty_world_30m_reward_test.txt', reward_array, delimiter=',')
+                np.savetxt('.../DRL_Path_Planning/src/tf_pkg/scripts/test_empty_world_30m_results/image_add_sensor/第二次训练/reward_pic/10_D3QN_PER_image_add_sensor_empty_world_30m_reward_test.txt', reward_array, delimiter=',')
 
                 self.episode += 1
 

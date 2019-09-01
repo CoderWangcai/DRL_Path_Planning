@@ -14,7 +14,7 @@ Date: 06/2019
 # 10_D3QN_PER_image_add_sensor_empty_world_30m_reward.txt
 # 10_D3QN_PER_image_add_sensor_empty_world_30m_reward.png
 # 训练好的网络模型
-# .../jackal/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_empty_world_30m_2019_06_01
+# .../DRL_Path_Planning/src/tf_pkg/scripts/saved_networks/10_D3QN_PER_image_add_sensor_empty_world_30m_2019_06_01
 
 # Import modules
 import tensorflow as tf
